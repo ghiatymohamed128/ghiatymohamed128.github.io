@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>عدّاد الاستغفار</title>
+<meta name="description" content="عدّاد استغفار تفاعلي بالعربية: اضغط في أي مكان للعدّ، مع محطات تشجيعية عند ٣٣ و١٠٠ و٥٠٠ و١٠٠٠. صدقة جارية باسم محمد غياتي." />
+<meta name="theme-color" content="#0e1512" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="عدّاد الاستغفار" />
+<meta property="og:description" content="عدّاد استغفار تفاعلي بالعربية: اضغط في أي مكان للعدّ، مع محطات تشجيعية عند ٣٣ و١٠٠ و٥٠٠ و١٠٠٠. صدقة جارية باسم محمد غياتي." />
+<meta property="og:locale" content="ar" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+html, body { margin: 0; min-height: 100%; }
+body { background: #0e1512; color: #efe9df; }
+
+.ist-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+    width: 100%;
+    background:
+        radial-gradient(120% 70% at 50% 0%, rgba(115, 168, 154, 0.14), transparent 60%),
+        radial-gradient(100% 60% at 50% 100%, rgba(115, 168, 154, 0.08), transparent 55%),
+        #0e1512;
+}
+
+.ist-top { padding: 40px 28px 8px; text-align: center; }
+
+.ist-dhikr {
+    margin: 0;
+    font-family: 'Noto Naskh Arabic', 'Amiri Quran', 'Amiri', 'Geeza Pro', serif;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.9;
+    color: #f2ecdf;
+    text-wrap: balance;
+}
+
+.ist-sadaqa {
+    margin: 14px 0 0;
+    font-family: 'Noto Naskh Arabic', 'Amiri', serif;
+    font-size: 19px;
+    line-height: 1.8;
+    color: #9ec4b6;
+}
+
+.ist-tap {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    width: 100%;
+    min-height: 300px;
+    padding: 24px;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.ist-tap:focus-visible { outline: 2px solid #73a89a; outline-offset: -6px; }
+
+.ist-count {
+    font-family: 'Noto Naskh Arabic', 'Geeza Pro', sans-serif;
+    font-size: 96px;
+    line-height: 1.15;
+    direction: ltr;
+    color: #f2ecdf;
+}
+
+.ist-count.pulse { animation: ist-pulse 420ms ease-out; }
+
+@keyframes ist-pulse {
+    0% { transform: scale(1.14); color: #a8cbbf; }
+    100% { transform: scale(1); color: #f2ecdf; }
+}
+
+.ist-ripple {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(115, 168, 154, 0.35);
+    pointer-events: none;
+    animation: ist-ripple 900ms ease-out forwards;
+}
+
+@keyframes ist-ripple {
+    0% { transform: scale(1); opacity: 0.9; }
+    100% { transform: scale(28); opacity: 0; }
+}
+
+.ist-milestone {
+    min-height: 34px;
+    font-family: 'Noto Naskh Arabic', 'Amiri', serif;
+    font-size: 20px;
+    line-height: 1.7;
+    color: #9ec4b6;
+}
+
+.ist-milestone.show { animation: ist-fade 900ms ease-out; }
+
+@keyframes ist-fade {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.ist-hint {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 14px;
+    color: #7d8a83;
+}
+
+.ist-foot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 28px 32px;
+    text-align: center;
+}
+
+.ist-reset {
+    min-height: 44px;
+    min-width: 96px;
+    padding: 8px 22px;
+    border: 1px solid rgba(239, 233, 223, 0.22);
+    border-radius: 999px;
+    background: transparent;
+    color: #a9b3ad;
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.ist-reset[data-confirming] { border-color: #c98f8f; color: #e0a8a8; }
+
+.ist-niyya {
+    margin: 0;
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 13.5px;
+    line-height: 1.9;
+    color: #6f7d76;
+    max-width: 420px;
+}
+
+
+@media (min-width: 768px) {
+    .ist-dhikr { font-size: 40px; }
+    .ist-sadaqa { font-size: 24px; }
+    .ist-count { font-size: 132px; }
+    .ist-milestone { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+<div class="ist-page">
+    <header class="ist-top">
+        <h1 class="ist-dhikr">اِسْتَغْفِرُ اللهَ الْعَظِيمَ وَأَتُوبُ إِلَيْهِ</h1>
+        <p class="ist-sadaqa">صَدَقَةٌ جَارِيَةٌ بِاسْمِ مُحَمَّد غِيَاتِي</p>
+    </header>
+    <button type="button" class="ist-tap" id="tap" aria-label="اِسْتَغْفِرُ اللهَ الْعَظِيمَ وَأَتُوبُ إِلَيْهِ — اضغط للعدّ">
+        <span class="ist-count" id="count"><bdi>0</bdi></span>
+        <span class="ist-milestone" id="milestone" aria-live="polite"></span>
+        <span class="ist-hint">اِضْغَطْ فِي أَيِّ مَكَانٍ لِلْعَدّ</span>
+    </button>
+    <footer class="ist-foot">
+        <button type="button" class="ist-reset" id="reset">تَصْفِير</button>
+        <p class="ist-niyya">بِنِيَّةِ قَبُولِ التَّوْبَةِ وَقَضَاءِ الْحَاجَةِ، لَكَ وَلِمَنْ شَارَكَ الأَجْر</p>
+    </footer>
+</div>
+<script>
+(function () {
+    var MILESTONES = {
+        33: 'ثَلاثٌ وَثَلاثُون، تَقَبَّلَ الله',
+        100: 'مِائَة، تَقَبَّلَ الله',
+        500: 'خَمْسُمِائَة، تَقَبَّلَ الله',
+        1000: 'أَلْف، تَقَبَّلَ الله'
+    };
+    var KEY = 'istighfar-count.v1';
+    var count = 0;
+    try { count = parseInt(localStorage.getItem(KEY), 10) || 0; } catch (e) {}
+
+    var tapBtn = document.getElementById('tap');
+    var countEl = document.getElementById('count');
+    var bdiEl = countEl.querySelector('bdi');
+    var milestoneEl = document.getElementById('milestone');
+    var resetBtn = document.getElementById('reset');
+    var confirming = false;
+    var milestoneTimer = null;
+    var confirmTimer = null;
+
+    function render() {
+        bdiEl.textContent = count.toLocaleString('en-US');
+    }
+
+    function pulse() {
+        countEl.classList.remove('pulse');
+        void countEl.offsetWidth;
+        countEl.classList.add('pulse');
+    }
+
+    function ripple(x, y) {
+        var r = document.createElement('span');
+        r.className = 'ist-ripple';
+        r.style.left = x + 'px';
+        r.style.top = y + 'px';
+        tapBtn.appendChild(r);
+        setTimeout(function () { r.remove(); }, 900);
+        var ripples = tapBtn.querySelectorAll('.ist-ripple');
+        if (ripples.length > 6) ripples[0].remove();
+    }
+
+    tapBtn.addEventListener('click', function (event) {
+        count += 1;
+        try { localStorage.setItem(KEY, String(count)); } catch (e) {}
+        render();
+        pulse();
+        var rect = tapBtn.getBoundingClientRect();
+        ripple(event.clientX - rect.left, event.clientY - rect.top);
+        if (MILESTONES[count]) {
+            milestoneEl.textContent = MILESTONES[count];
+            milestoneEl.classList.remove('show');
+            void milestoneEl.offsetWidth;
+            milestoneEl.classList.add('show');
+            if (milestoneTimer) clearTimeout(milestoneTimer);
+            milestoneTimer = setTimeout(function () {
+                milestoneEl.textContent = '';
+                milestoneEl.classList.remove('show');
+            }, 6000);
+        }
+    });
+
+    resetBtn.addEventListener('click', function (event) {
+        event.stopPropagation();
+        if (!confirming) {
+            confirming = true;
+            resetBtn.setAttribute('data-confirming', '');
+            resetBtn.textContent = 'اِضْغَطْ مَرَّةً أُخْرَى لِلتَّصْفِير';
+            confirmTimer = setTimeout(function () {
+                confirming = false;
+                resetBtn.removeAttribute('data-confirming');
+                resetBtn.textContent = 'تَصْفِير';
+            }, 4000);
+            return;
+        }
+        if (confirmTimer) clearTimeout(confirmTimer);
+        confirming = false;
+        resetBtn.removeAttribute('data-confirming');
+        resetBtn.textContent = 'تَصْفِير';
+        milestoneEl.textContent = '';
+        count = 0;
+        try { localStorage.setItem(KEY, '0'); } catch (e) {}
+        render();
+    });
+
+    render();
+})();
+</script>
+</body>
+</html>
